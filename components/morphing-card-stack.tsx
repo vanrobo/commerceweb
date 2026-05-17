@@ -114,7 +114,7 @@ export function MorphingCardStack({
         <motion.div layout className={cn(containerStyles[layout], "mx-auto")}>
           <AnimatePresence mode="popLayout">
             {displayCards.map((card) => {
-              const styles = getLayoutStyles(card.stackPosition)
+              const { scale: layoutScale, ...restStyles } = getLayoutStyles(card.stackPosition)
               const isExpanded = expandedCard === card.id
               const isTopCard = layout === "stack" && card.stackPosition === 0
 
@@ -123,7 +123,7 @@ export function MorphingCardStack({
                   key={card.id}
                   layoutId={card.id}
                   initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: isExpanded ? 1.02 : 1, x: 0, ...styles }}
+                  animate={{ opacity: 1, x: 0, ...restStyles, scale: isExpanded ? 1.02 : layoutScale }}
                   exit={{ opacity: 0, scale: 0.8, x: -200 }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                   drag={isTopCard ? "x" : false}

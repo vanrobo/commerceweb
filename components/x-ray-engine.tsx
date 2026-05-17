@@ -484,7 +484,7 @@ export function XRayEngine() {
                                             <div className="text-white font-black text-sm mb-2 normal-case leading-snug">{finding.title}</div>
                                             <div className="text-zinc-400 font-bold normal-case mb-3 leading-relaxed text-[10px] font-sans border-t border-white/10 pt-2">{finding.description}</div>
                                             <div className="bg-red-600 text-white rounded-lg py-2 px-3 font-black text-center text-xs tracking-wider">
-                                                IMPACT VALUE: ₹{finding.value.toFixed(2)}
+                                                IMPACT VALUE: ₹{(finding.value ?? 0).toFixed(2)}
                                             </div>
                                         </div>
                                     </div>
@@ -552,7 +552,7 @@ export function XRayEngine() {
                                             <div className="relative group cursor-pointer inline-flex items-center">
                                                 <Info className="w-3.5 h-3.5 text-zinc-400 hover:text-black transition-colors" />
                                                 <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-[#0c120c] text-white text-[10px] font-bold p-2.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 shadow-2xl border border-white/20 text-center leading-normal normal-case">
-                                                    Mapped charge: <strong className="text-red-500">₹{finding.value.toFixed(2)}</strong>. This represents a platform drip markup violating the CPA 2019 guidelines.
+                                                    Mapped charge: <strong className="text-red-500">₹{(finding.value ?? 0).toFixed(2)}</strong>. This represents a platform drip markup violating the CPA 2019 guidelines.
                                                 </div>
                                             </div>
                                         </span>

@@ -11,7 +11,7 @@ import { AgentChat } from "@/components/agent-chat";
 type Mode = "bridge" | "consult" | "scanner";
 
 export default function LegalPage() {
-    const { findings, totalMarkup, previewUrl, clearStore } = useScannerStore();
+    const { findings, totalMarkup, previewUrl, clearScanData } = useScannerStore();
     
     // Mount state for hydration fix
     const [mounted, setMounted] = useState(false);
@@ -168,7 +168,7 @@ export default function LegalPage() {
                                     </div>
                                 )}
                                 
-                                <Link href="/analyze" onClick={() => clearStore()} className="w-full bg-[#0C120C] text-[#FDFFFF] h-14 text-sm font-black uppercase tracking-widest rounded-xl flex items-center justify-center gap-3 shadow-xl hover:bg-[#1a251a] transition-colors mt-auto">
+                                <Link href="/analyze" onClick={() => clearScanData()} className="w-full bg-[#0C120C] text-[#FDFFFF] h-14 text-sm font-black uppercase tracking-widest rounded-xl flex items-center justify-center gap-3 shadow-xl hover:bg-[#1a251a] transition-colors mt-auto">
                                     Start New Scan
                                 </Link>
                             </div>
