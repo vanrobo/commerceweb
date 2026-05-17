@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Sentinel — Consumer Defense & Redressal Suite",
+  title: "FinalPrice — The E-Commerce Audit Suite",
   description: "Expose e-commerce dark patterns and algorithmic drip pricing using local OCR mapping and Indian Consumer Protection Act (CPA) 2019 legal drafting.",
   icons: {
     icon: "/vercel.svg",

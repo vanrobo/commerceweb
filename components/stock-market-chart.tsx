@@ -48,13 +48,27 @@ const chartConfig: ChartConfig = {
 };
 
 export const Component = () => {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const [selectedPeriod, setSelectedPeriod] = React.useState<
     "1d" | "1w" | "1m" | "3m" | "1y"
   >("3m");
   const [selectedCompany, setSelectedCompany] =
     React.useState<string>("acme-tech-inc");
 
-  const stockData = generateStockData(selectedPeriod);
+  const stockData = React.useMemo(() => {
+    if (!mounted) {
+      return Array.from({ length: 90 }, (_, i) => ({
+        time: i,
+        price: 440 + Math.sin(i * 0.1) * 5,
+        timestamp: "2026-05-17T12:00:00.000Z",
+      }));
+    }
+    return generateStockData(selectedPeriod);
+  }, [mounted, selectedPeriod]);
 
   const periods: { label: string; value: "1d" | "1w" | "1m" | "3m" | "1y" }[] =
     [

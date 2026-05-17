@@ -30,6 +30,13 @@ interface Finding {
     value?: number;
 }
 
+const EXAMPLES = [
+    "/examples/zepto-receipt.jpg",
+    "/examples/zepto-receipt2.webp",
+    "/examples/blinkit-receipt.jpg",
+    "/examples/swiggy-receipt3.webp"
+];
+
 export function XRayEngine() {
     const [file, setFile] = useState<File | null>(null);
     const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -87,8 +94,8 @@ export function XRayEngine() {
 
             // Check for built-in examples to provide a hyper-fast, pixel-perfect experience
             const isString = typeof imageSource === "string";
-            const isZeptoExample = isString && imageSource.includes("zepto");
-            const isZomatoExample = isString && imageSource.includes("zomato");
+            const isZeptoExample = isString && imageSource.includes("zepto-receipt.jpg");
+            const isZomatoExample = isString && imageSource.includes("zomato-receipt.jpg");
 
             if (isZeptoExample || isZomatoExample) {
                 setStatusText("Initializing Neural Core...");
@@ -393,43 +400,27 @@ export function XRayEngine() {
                                 Select an Example Receipt to Scan
                             </h4>
                             <div className="grid grid-cols-2 gap-4">
-                                <div
-                                    onClick={() => loadExample("/examples/zomato-receipt.jpg")}
-                                    className="cursor-pointer group relative flex flex-col bg-white rounded-xl border border-zinc-200 overflow-hidden shadow-sm hover:shadow-md hover:border-black transition-all"
-                                >
-                                    <div className="h-28 bg-zinc-100 overflow-hidden relative">
-                                        <img 
-                                            src="/examples/zomato-receipt.jpg" 
-                                            alt="Zomato Example" 
-                                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                                        />
-                                        <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
+                                {EXAMPLES.map((ex) => (
+                                    <div
+                                        key={ex}
+                                        onClick={() => loadExample(ex)}
+                                        className="cursor-pointer group relative flex flex-col bg-white rounded-xl border border-zinc-200 overflow-hidden shadow-sm hover:shadow-md hover:border-black transition-all"
+                                    >
+                                        <div className="h-28 bg-zinc-100 overflow-hidden relative">
+                                            <img 
+                                                src={ex} 
+                                                alt={getExampleName(ex)} 
+                                                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                            />
+                                            <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
+                                        </div>
+                                        <div className="p-3 bg-white border-t border-zinc-100 flex flex-col items-center justify-center min-h-[44px]">
+                                            <span className="text-xs font-black text-black capitalize">
+                                                {getExampleName(ex)}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div className="p-3 bg-white border-t border-zinc-100 flex flex-col items-center justify-center min-h-[44px]">
-                                        <span className="text-xs font-black text-black capitalize">
-                                            {getExampleName("/examples/zomato-receipt.jpg")}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div
-                                    onClick={() => loadExample("/examples/zepto-receipt.jpg")}
-                                    className="cursor-pointer group relative flex flex-col bg-white rounded-xl border border-zinc-200 overflow-hidden shadow-sm hover:shadow-md hover:border-black transition-all"
-                                >
-                                    <div className="h-28 bg-zinc-100 overflow-hidden relative">
-                                        <img 
-                                            src="/examples/zepto-receipt.jpg" 
-                                            alt="Zepto Example" 
-                                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                                        />
-                                        <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
-                                    </div>
-                                    <div className="p-3 bg-white border-t border-zinc-100 flex flex-col items-center justify-center min-h-[44px]">
-                                        <span className="text-xs font-black text-black capitalize">
-                                            {getExampleName("/examples/zepto-receipt.jpg")}
-                                        </span>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>

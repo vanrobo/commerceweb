@@ -162,7 +162,7 @@ const StockMarketTracker = () => {
       <div className="mb-8">
         <div className="flex items-center gap-4 mb-2">
           <span className="text-[2.75rem] leading-none font-black tracking-tighter text-[#0C120C]">
-            ₹{(chartData[chartData.length - 1] || currentSettings.basePrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            ₹{(chartData[chartData.length - 1] || currentSettings.basePrice).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </span>
           <span className="bg-[#52B788]/20 text-[#42956E] px-2.5 py-1 rounded-md flex items-center gap-1 text-sm font-bold border border-[#52B788]/20">
             <ArrowUpRight className="w-4 h-4 stroke-[3]" /> {currentSettings.percentage}
@@ -200,7 +200,7 @@ const StockMarketTracker = () => {
             className="absolute z-20 bg-[#0C120C] text-[#FDFFFF] text-xs font-bold px-3 py-1.5 rounded-lg shadow-xl pointer-events-none transform -translate-x-1/2 whitespace-nowrap"
             style={{ left: `${(hoverData.x / chartWidth) * 100}%`, top: `${(hoverData.y / chartHeight) * 100}%`, marginTop: '15px' }}
           >
-            Price {(hoverData.value).toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 })}
+            Price {(hoverData.value).toLocaleString("en-US", { minimumFractionDigits: 3, maximumFractionDigits: 3 })}
           </div>
         )}
       </div>
@@ -209,14 +209,14 @@ const StockMarketTracker = () => {
         <div className="text-center z-10 flex gap-2 items-baseline">
           <span className="text-[#FDFFFF]/60 text-sm font-medium">Highest</span>
           <span className="text-[#FDFFFF] font-bold text-lg tracking-tight">
-            {chartData.length ? Math.max(...chartData).toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 }) : "0.000"}
+            {chartData.length ? Math.max(...chartData).toLocaleString("en-US", { minimumFractionDigits: 3, maximumFractionDigits: 3 }) : "0.000"}
           </span>
         </div>
         <div className="w-[1px] bg-[#FDFFFF]/10 my-1"></div>
         <div className="text-center z-10 flex gap-2 items-baseline">
           <span className="text-[#FDFFFF]/60 text-sm font-medium">Lowest</span>
           <span className="text-[#FDFFFF] font-bold text-lg tracking-tight">
-            {chartData.length ? Math.min(...chartData).toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 }) : "0.000"}
+            {chartData.length ? Math.min(...chartData).toLocaleString("en-US", { minimumFractionDigits: 3, maximumFractionDigits: 3 }) : "0.000"}
           </span>
         </div>
       </div>
