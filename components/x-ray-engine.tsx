@@ -331,7 +331,7 @@ export function XRayEngine() {
                         left = "4%";
                         width = "92%";
                         if (searchWord === "handling" || searchWord === "handling fee") {
-                            top = "43.5%";
+                            top = "37.2%";
                             height = "3.2%";
                         } else if (searchWord === "cancelled") {
                             top = "67.5%";
@@ -595,7 +595,7 @@ export function XRayEngine() {
                             </div>
 
                             <Link
-                                href="/legal"
+                                href="/legal?mode=bridge"
                                 className="w-full bg-red-600 hover:bg-red-700 text-white h-14 text-sm font-black uppercase tracking-widest rounded-xl flex items-center justify-center gap-3 shadow-xl shadow-red-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
                             >
                                 <Scale className="w-5 h-5" />

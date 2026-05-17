@@ -22,6 +22,17 @@ export default function LegalPage() {
     // Determine default mode based on whether data was handed off
     const [mode, setMode] = useState<Mode>("consult");
 
+    // Read optional mode query parameter on client mount
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const params = new URLSearchParams(window.location.search);
+            const initialMode = params.get("mode") as Mode | null;
+            if (initialMode && ["bridge", "consult", "scanner"].includes(initialMode)) {
+                setMode(initialMode);
+            }
+        }
+    }, []);
+
     // Mode A: Bridge State
     const [isGenerating, setIsGenerating] = useState(false);
     const [notice, setNotice] = useState<string | null>(null);
